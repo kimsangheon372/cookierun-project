@@ -1,0 +1,248 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  padding: 20px;
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 800px;
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+.game-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #4E342E;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  min-width: 80px;
+}
+
+.stat .label {
+  font-size: 0.75rem;
+  color: #757575;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat .value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4E342E;
+}
+
+.health-bar-container {
+  position: relative;
+  width: 800px;
+  max-width: 100%;
+  height: 28px;
+  margin-bottom: 10px;
+}
+
+.health-bar-bg {
+  width: 100%;
+  height: 100%;
+  background: #e0e0e0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.health-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 50%, #FFEB3B 75%, #FF5722 100%);
+  border-radius: 14px;
+  transition: width 0.1s linear, background 0.3s ease;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.health-bar-fill[style*="0%"],
+.health-bar-fill[style*="1%"],
+.health-bar-fill[style*="2%"],
+.health-bar-fill[style*="3%"],
+.health-bar-fill[style*="4%"],
+.health-bar-fill[style*="5%"],
+.health-bar-fill[style*="6%"],
+.health-bar-fill[style*="7%"],
+.health-bar-fill[style*="8%"],
+.health-bar-fill[style*="9%"],
+.health-bar-fill[style*="10%"],
+.health-bar-fill[style*="11%"],
+.health-bar-fill[style*="12%"],
+.health-bar-fill[style*="13%"],
+.health-bar-fill[style*="14%"],
+.health-bar-fill[style*="15%"],
+.health-bar-fill[style*="16%"],
+.health-bar-fill[style*="17%"],
+.health-bar-fill[style*="18%"],
+.health-bar-fill[style*="19%"],
+.health-bar-fill[style*="20%"] {
+  background: linear-gradient(90deg, #FF5722 0%, #FF9800 100%);
+  animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.health-text {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 700;
+  color: #4E342E;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+  font-size: 0.9rem;
+}
+
+.game-canvas {
+  background: #87CEEB;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  border: 3px solid #FFF8E1;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.controls-hint {
+  margin-top: 16px;
+  padding: 12px 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  font-size: 0.9rem;
+  color: #616161;
+}
+
+.controls-hint kbd {
+  background: #EFEBE9;
+  border: 1px solid #D7CCC8;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4E342E;
+  box-shadow: 0 2px 0 #D7CCC8;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 248, 225, 0.95);
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+  padding: 40px;
+  text-align: center;
+}
+
+.overlay h2 {
+  margin: 0 0 16px;
+  font-size: 2.5rem;
+  color: #4E342E;
+}
+
+.overlay p {
+  margin: 8px 0;
+  font-size: 1.1rem;
+  color: #6D4C41;
+}
+
+.overlay button {
+  margin-top: 24px;
+  padding: 14px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(255, 87, 34, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.overlay button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 87, 34, 0.5);
+}
+
+.overlay button:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 840px) {
+  .game-container {
+    padding: 10px;
+  }
+  
+  .game-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .game-header h1 {
+    font-size: 1.4rem;
+  }
+  
+  .health-bar-container,
+  .game-header {
+    width: 100%;
+  }
+  
+  .controls-hint {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}
+
+/* Focus visible for accessibility */
+.game-canvas:focus-visible {
+  outline: 3px solid #FF9800;
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .health-bar-fill {
+    transition: none;
+  }
+  .overlay button {
+    transition: none;
+  }
+}
